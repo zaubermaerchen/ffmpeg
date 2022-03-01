@@ -1,6 +1,6 @@
 FROM alpine:edge AS build
 
-ARG ffmpeg_version="4.3.1"
+ARG ffmpeg_version="4.3.3"
 
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 RUN apk add --update \
@@ -29,7 +29,7 @@ RUN apk add --update \
 
 RUN mkdir /usr/local/src && \
   cd /usr/local/src && \
-  wget http://ffmpeg.org/releases/ffmpeg-${ffmpeg_version}.tar.gz && \
+  wget https://ffmpeg.org/releases/ffmpeg-${ffmpeg_version}.tar.gz && \
   tar zxf ffmpeg-${ffmpeg_version}.tar.gz
 
 RUN cd /usr/local/src/ffmpeg-${ffmpeg_version} && \
