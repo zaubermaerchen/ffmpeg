@@ -1,6 +1,6 @@
 FROM alpine:edge AS build
 
-ARG ffmpeg_version="4.4.1"
+ARG ffmpeg_version="5.0"
 
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 RUN apk add --update \
@@ -50,7 +50,6 @@ RUN cd /usr/local/src/ffmpeg-${ffmpeg_version} && \
   --enable-libwebp \
   --enable-librtmp \
   --enable-postproc \
-  --enable-avresample \
   --enable-libfreetype \
   --enable-openssl \
   --enable-shared \
@@ -89,7 +88,6 @@ COPY --from=build /usr/local/include/libavcodec /usr/local/include/libavcodec
 COPY --from=build /usr/local/include/libavdevice /usr/local/include/libavdevice
 COPY --from=build /usr/local/include/libavfilter /usr/local/include/libavfilter
 COPY --from=build /usr/local/include/libavformat /usr/local/include/libavformat
-COPY --from=build /usr/local/include/libavresample /usr/local/include/libavresample
 COPY --from=build /usr/local/include/libavutil /usr/local/include/libavutil
 COPY --from=build /usr/local/include/libpostproc /usr/local/include/libpostproc
 COPY --from=build /usr/local/include/libswresample /usr/local/include/libswresample
