@@ -1,6 +1,6 @@
 FROM alpine:edge AS build
 
-ARG ffmpeg_version="5.0"
+ARG ffmpeg_version="5.0.1"
 
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 RUN apk add --update \
